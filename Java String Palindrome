@@ -1,0 +1,46 @@
+Given a string , print Yes if it is a palindrome, print No otherwise.
+
+Constraints
+A will consist at most 50 lower case english letters.
+
+Sample Input
+madam
+
+Sample Output
+Yes
+
+***********************************************************************
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+               
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        
+        int n = A.length();
+        if(n==0 || n==1){
+            System.out.println("Yes");
+            System.exit(1);
+        }
+        
+        boolean isPalindrome = true;
+        
+        for(int i=0; i<n/2; i++){
+            String leftSubstring = A.substring(i, i+1);
+            String rightSubstring =  A.substring(n-(i+1), n-i);
+            if( (leftSubstring.compareTo(rightSubstring)) != 0){
+                isPalindrome = false;
+                break;
+            }
+        }
+        
+        if(isPalindrome ==true )
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
+}
