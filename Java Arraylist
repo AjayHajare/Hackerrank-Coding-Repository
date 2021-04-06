@@ -1,0 +1,81 @@
+You are given n lines. In each line there are zero or more integers. You need to answer a few queries where you need to tell the number located in y position of x line.
+
+Input Format:
+The first line has an integer 'n'. In each of the next 'd' lines there will be an integer 'd' denoting number of integers on that line and then there will be 
+'d' space-separated integers. In the next line there will be an integer 'q' denoting number of queries. Each query will consist of two integers 'x' and 'y'.
+
+Constraints
+Each number will fit in signed integer.
+Total number of integers in n lines will not cross 10^5.
+
+Output Format:
+In each line, output the number located in 'y' position of 'x' line. If there is no such position, just print "ERROR!"
+
+Sample Input:
+5
+5 41 77 74 22 44
+1 12
+4 37 34 36 52
+0
+3 20 22 33
+5
+1 3
+3 4
+3 1
+4 3
+5 5
+
+Sample Output:
+74
+52
+37
+ERROR!
+ERROR!
+
+
+*************************************************************************************************************************************
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        int n = scan.nextInt();
+        ArrayList<ArrayList<Integer>> aList = new ArrayList<ArrayList<Integer>>();        // "ArrayList of Arraylist" is difined
+        
+        for(int i=0; i<n; i++){
+            int d = scan.nextInt();
+            ArrayList<Integer> list = new ArrayList<Integer>();                          // For each line of input a new ArrayList is created
+            for(int j=0; j<d; j++){
+                list.add(scan.nextInt());
+            }
+            aList.add(list);                                                            // Add the new created ArrayList to the main "ArrayList of Arraylist"
+        }
+        
+        int q = scan.nextInt();
+        for(int i=0; i<q; i++){
+            int x = scan.nextInt();
+            int y = scan.nextInt();
+            
+            if(x <= n){                                                                // If 'x' is less than no. of lines then print "ERROR!"
+                if(aList.get(x-1).size() < y){                                         // If the 'y' is greater than no. of element in that line then print "ERROR!"
+                    System.out.println("ERROR!");
+                }
+                else {
+                    System.out.println(aList.get(x-1).get(y-1));                      // If all appropriate input, go to 'x-1' line and get 'y-1' element from it.
+                }
+            }
+            else{
+                System.out.println("ERROR!");
+            }
+            
+        }
+        
+        scan.close();
+    }
+}
+
