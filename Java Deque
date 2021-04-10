@@ -1,0 +1,61 @@
+In this problem, you are given N integers. You need to find the maximum number of unique integers among all the possible contiguous subarrays of size M.
+
+Input Format:
+The first line of input contains two integers N and M : representing the total number of integers and the size of the subarray, respectively. The next line contains 
+N space separated integers.
+
+Constraints:
+The numbers in the array will range between [0, 10000000].
+
+Output Format:
+Print the maximum number of unique integers among all possible contiguous subarrays of size M.
+
+Sample Input:
+6 3
+5 3 5 2 3 2
+
+Sample Output:
+3
+
+Explanation:
+In the sample testcase, there are 4 subarrays of contiguous numbers.
+[5,3,5] - Has 2 unique numbers.
+[3,5,2] - Has 3 unique numbers.
+[5,2,3] - Has 3 unique numbers.
+[2,3,2] - Has 2 unique numbers.
+In these subarrays, there are 2,3,3,2 unique numbers, respectively. The maximum amount of unique numbers among all possible contiguous subarrays is 3.
+
+
+*********************************************************************************************************************************************************************
+
+
+    import java.util.*;
+    public class test {
+        public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+            Deque<Integer> deque = new ArrayDeque<Integer>();     //Declared 'deque' of 'Interger' type
+            int n = in.nextInt();
+            int m = in.nextInt();
+            int max = 0;
+            
+            Set<Integer> set = new HashSet<Integer>();            //Declared 'Hashset' of 'Interger' type
+            for (int i = 0; i < n; i++) {
+                int num = in.nextInt();
+                deque.add(num);
+                set.add(num);
+                
+                if(deque.size() == m+1){
+                    int temp = deque.remove();                  // Remove element from 'front' of deque
+                    if(!deque.contains(temp))                   //if remaining deque of size 'm' does not contain 'temp', then remove it from 'Hashset' also. Check comment 
+                                                                //for solution - https://www.hackerrank.com/challenges/java-dequeue/forum/comments/255651
+                        set.remove(temp);
+                }
+                max = Math.max(max, set.size());
+            }
+            
+            System.out.println(max);
+        }
+    }
+
+
+
