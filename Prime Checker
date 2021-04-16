@@ -55,7 +55,9 @@ class Prime{
                 }
         }
         
-        return true;
+        return true;                                     //The idea is to see if our number n is divisible by any numbers (not including 1 and n). If it's divisible by any such 
+							 // numbers, it is not prime, and we return false. If it's not divisible by any of these numbers, we come out of the 
+							 // for loop, and return true since our number is prime.
     }
 }
 
