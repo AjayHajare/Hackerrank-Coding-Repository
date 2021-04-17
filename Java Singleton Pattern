@@ -1,0 +1,54 @@
+Singleton Pattern means - "define a class that has only one instance and provides a global point of access to it"
+
+To create the singleton class, we need to have static member of class, private constructor and static factory method :
+  Static member:        It gets memory only once because of static, it contains the instance of the Singleton class.
+  Private constructor:  It will prevent to instantiate the Singleton class from outside the class.
+  Static factory method: This provides the global point of access to the Singleton object and returns the instance to the caller.
+  
+****************************************************************************************************************************************************
+
+Complete the Singleton class in your editor which contains the following components:
+A private Singleton non parameterized constructor.
+A public String instance variable named .
+Write a static method named getSingleInstance that returns the single instance of the Singleton class.
+Once submitted, our hidden Solution class will check your code by taking a String as input and then using your Singleton class to print a line.
+
+Input Format:
+You will not be handling any input in this challenge.
+
+Output Format:
+You will not be producing any output in this challenge.
+
+Sample Input:
+hello world
+
+Sample Output:
+Hello I am a singleton! Let me say hello world to you
+
+******************************************************************************************************************************************************************
+
+import java.io.*;
+import java.util.*;
+
+class Singleton{
+    private Singleton(){}                                           // Private constructor:  It will prevent to instantiate the Singleton class from outside the class.
+    
+    private static Singleton s;                                     
+    
+    public String str;
+    
+    public static Singleton getSingleInstance(){
+        s = new Singleton();                                      // It gets memory only once because of static, it contains the instance of the Singleton class.
+        return s;
+    }
+}
+
+public class solution{
+    public static void main(String args[]){
+        Scanner scan = new Scanner(System.in);
+        
+        String arg = scan.nextLine();
+        
+        
+    }
+}
